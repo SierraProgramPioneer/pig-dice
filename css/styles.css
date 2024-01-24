@@ -6,7 +6,18 @@ body {
     padding-left: 50px;
 }
 
+.col-1 {
+    padding: 10px;
+}
+
+.col-5 {
+    padding: 20px;
+}
 
 .col-6 {
     padding: 20px;
+}
+
+img {
+    height: 50px;
 }
