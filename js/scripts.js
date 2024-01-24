@@ -1,11 +1,13 @@
+function Game(player1Name, player2Name) {
+    let players = {};
+}
+
 function Player(playerNumber, name, currentScore, totalScore) {
     this.playerNumber = playerNumber;
     this.name = name;
     this.currentScore = currentScore;
     this.totalScore = totalScore;
 }
-
-
 
 function switchPlayers() {
     console.log("switch players")
@@ -28,7 +30,10 @@ function rollDice() {
 
 
 function newGame() {
-    console.log("new game");
+    const player1Name = document.getElementById("player1Name").value;
+    console.log(player1Name);
+    const player2Name = document.getElementById("player2Name").value;
+    console.log(player2Name);
 }
 
 
