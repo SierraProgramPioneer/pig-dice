@@ -5,3 +5,8 @@ body {
     padding-top: 30px;
     padding-left: 50px;
 }
+
+
+.col-6 {
+    padding: 20px;
+}
