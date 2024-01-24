@@ -1,11 +1,25 @@
+// UI Logic
 
-function Player(playerNumber, name, currentScore, totalScore) {
+function displayWinner(winnerName) {
+    console.log(winnerName);
+}
+
+// Business Logic for Players
+
+function Player(playerNumber, name, currentTurnScore, totalScore) {
     this.playerNumber = playerNumber;
     this.name = name;
-    this.currentScore = currentScore;
+    this.currentTurnScore = currentTurnScore;
     this.totalScore = totalScore;
 }
 
+function evaluateScore(currentTurnScore, activePlayer) {
+    const currenttotalScore = sessionGame.players[activePlayer].totalScore;
+    const newTotalScore = currentTurnScore + currenttotalScore;
+    if (newTotalScore >= sessionGame.pointGoal) {
+        displayWinner(sessionGame.players[activePlayer].name)
+    }
+}
 
 function switchPlayers() {
     if (sessionGame.activePlayer === 1) {
@@ -20,35 +34,48 @@ function switchPlayers() {
 
 
 function holdScore() {
+    // Set Active Player Index
     let activePlayer = "player" + sessionGame.activePlayer;
-    sessionGame.players[activePlayer].totalScore = sessionGame.players[activePlayer].totalScore + sessionGame.players[activePlayer].currentScore;
-    sessionGame.players[activePlayer].currentScore = 0;
+
+    // Add player's currentTurnScore to player's Total Score
+    sessionGame.players[activePlayer].totalScore = sessionGame.players[activePlayer].totalScore + sessionGame.players[activePlayer].currentTurnScore;
+
+    // Set player's currentTurnScore to 0
+    sessionGame.players[activePlayer].currentTurnScore = 0;
+
     console.log("New Total Score:" + " " + sessionGame.players[activePlayer].totalScore);
+    // Switch Players
     switchPlayers();
 }
 
 
 function rollDice() {
+    // Set Active Player Index
+    let activePlayer = "player" + sessionGame.activePlayer;
+
     // Get Dice Roll
     let diceRoll = Math.floor(Math.random() * 6) + 1;
     console.log("Dice Roll" + " " + diceRoll);
-    let activePlayer = "player" + sessionGame.activePlayer;
+
+    // If roll is 1 set player's currentTurnScore to 0 and switch players
     if (diceRoll === 1) {
-        sessionGame.players[activePlayer].currentScore = 0;
-        console.log("Total Score:" + " " + sessionGame.players[activePlayer].totalScore);
+        sessionGame.players[activePlayer].currentTurnScore = 0;
         switchPlayers();
     }
+    // If roll is 2-6 add roll to currentTurnScore
     else {
-        sessionGame.players[activePlayer].currentScore = sessionGame.players[activePlayer].currentScore + diceRoll;
+        sessionGame.players[activePlayer].currentTurnScore = sessionGame.players[activePlayer].currentTurnScore + diceRoll;
+        evaluateScore(sessionGame.players[activePlayer].currentTurnScore, activePlayer)
     }
 }
 
 // Business Logic for Game
 
-function Game(player1, player2) {
+function Game(player1, player2, pointGoal) {
     this.players = { player1, player2 };
     // Set Active Player
     this.activePlayer = 1;
+    this.pointGoal = pointGoal;
 }
 
 function newGame(event) {
@@ -57,10 +84,11 @@ function newGame(event) {
     // Create Players
     const player1Name = document.getElementById("player1Name").value;
     const player2Name = document.getElementById("player2Name").value;
+    const pointGoal = parseInt(document.getElementById("pointGoal").value);
     let player1 = new Player(1, player1Name, 0, 0);
     let player2 = new Player(2, player2Name, 0, 0);
     // Create New Game
-    sessionGame = new Game(player1, player2);
+    sessionGame = new Game(player1, player2, pointGoal);
 };
 
 
