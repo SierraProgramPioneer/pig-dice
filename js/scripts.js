@@ -1,5 +1,5 @@
-function Game(player1Name, player2Name) {
-    let players = {};
+function Game(player1, player2) {
+    this.players = { player1, player2 };
 }
 
 function Player(playerNumber, name, currentScore, totalScore) {
@@ -30,10 +30,14 @@ function rollDice() {
 
 
 function newGame() {
+    // Create Players
     const player1Name = document.getElementById("player1Name").value;
-    console.log(player1Name);
     const player2Name = document.getElementById("player2Name").value;
-    console.log(player2Name);
+    let player1 = new Player(1, player1Name, 0, 0);
+    let player2 = new Player(2, player2Name, 0, 0);
+    // Create New Game
+    const sessionGame = new Game(player1, player2);
+    console.log(sessionGame);
 }
 
 
