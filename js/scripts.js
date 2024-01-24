@@ -1,5 +1,10 @@
+function switchPlayers() {
+    console.log("switch players")
+}
+
 function holdScore() {
     console.log("hold score");
+    switchPlayers();
 }
 
 
@@ -15,18 +20,14 @@ function newGame() {
 
 window.addEventListener("load", function () {
     // Add Event Listener to New Game Button
-    newGameButton = document.querySelector("button#newGame");
+    const newGameButton = document.querySelector("button#newGame");
     newGameButton.addEventListener("click", newGame);
 
     // Add Event Listener to Roll Dice Buttons
-    let rollDiceButtons = document.querySelectorAll(".rollDice");
-    rollDiceButtons.forEach(function (button) {
-        button.addEventListener("click", rollDice);
-    });
+    const rollDiceButton = document.querySelector("button#rollDice");
+    rollDiceButton.addEventListener("click", rollDice);
 
     // Add Event Listener to Hold Score Buttons
-    let holdScoreButtons = document.querySelectorAll(".holdScore");
-    holdScoreButtons.forEach(function (button) {
-        button.addEventListener("click", holdScore);
-    });
-})
+    const holdScoreButton = document.querySelector("button#holdScore");
+    holdScoreButton.addEventListener("click", holdScore);
+});
