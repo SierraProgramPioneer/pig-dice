@@ -1,10 +1,23 @@
 body {
-    background-color: rgb(220, 109, 194);
-    color: white;
+    background-color: rgb(221, 192, 214);
+    color: rgb(185, 83, 83);
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 30px;
-    padding-left: 50px;
+    float: center;
 }
+
+// Cards
+
+.card {
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-content: space-around;
+}
+
+
+// Columns
 
 .col-1 {
     padding: 10px;
@@ -16,8 +29,15 @@ body {
 
 .col-6 {
     padding: 20px;
+
 }
 
-img {
-    height: 50px;
+
+
+// Images
+
+
+#dice {
+    padding: 30px;
+    height: 300px;
 }

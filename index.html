@@ -13,23 +13,25 @@
 <body>
 
     <div class="container">
+        <h1>Let's Play Pig Dice!</h1>
         <div class="row">
-            <div class="col-1">
-                <img src="images/pig.png" alt="A picture of a cute Pig">
-            </div>
-            <div class="col-5">
+            <div class="col-5 card">
                 <h3>Player 1</h3>
+                <h5>Dice Roll:</h5>
+                <h5>Current Turn Total:</h5>
+                <h5>Total:</h5>
             </div>
-            <div class="col-1">
-                <img src="images/pig.png" alt="A picture of a cute Pig">
-            </div>
-            <div class="col-5">
+
+            <div class="col-5 card">
                 <h3>Player 2</h3>
+                <h5>Dice Roll:</h5>
+                <h5>Current Turn Total:</h5>
+                <h5>Total:</h5>
             </div>
         </div>
         <div class="col-6">
-            <button id="rollDice">Roll Dice</button>
-            <button id="holdScore">Hold Score</button>
+            <button type="button" class="btn btn-primary" id="rollDice">Roll Dice</button>
+            <button type="button" class="btn btn-primary" id="holdScore">Hold Score</button>
         </div>
         <div class="col-12">
             <label for="pointGoal">Number to Play Up To</label>
@@ -39,6 +41,9 @@
             <label for="player2Name">Player 2 Name</label>
             <input type="text" id="player2Name">
             <button id="newGame">New Game</button>
+        </div>
+        <div class="col-12">
+            <img id="dice" src="images/dice2.png" alt="Two pink Dice">
         </div>
     </div>
 
