@@ -15,35 +15,45 @@
     <div class="container">
         <h1>Let's Play Pig Dice!</h1>
         <div class="row">
-            <div class="col-5 card">
+            <div class="col-5 card mx-auto d-block">
                 <h3>Player 1</h3>
-                <h5>Dice Roll:</h5>
-                <h5>Current Turn Total:</h5>
-                <h5>Total:</h5>
+                <h5>Dice Roll: <span></span></h5>
+                <h5>Current Turn Total: <span></span></h5>
+                <h5>Total: <span></span></h5>
             </div>
 
-            <div class="col-5 card">
+            <div class="col-5 card mx-auto d-block">
                 <h3>Player 2</h3>
-                <h5>Dice Roll:</h5>
-                <h5>Current Turn Total:</h5>
-                <h5>Total:</h5>
+                <h5>Dice Roll: <span></span></h5>
+                <h5>Current Turn Total: <span></span></h5>
+                <h5>Total: <span></span></h5>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 mx-auto d-block">
             <button type="button" class="btn btn-primary" id="rollDice">Roll Dice</button>
             <button type="button" class="btn btn-primary" id="holdScore">Hold Score</button>
         </div>
-        <div class="col-12">
-            <label for="pointGoal">Number to Play Up To</label>
-            <input type="number" id="pointGoal">
+
+        <div class="row">
             <label for="player1Name">Player 1 Name</label>
             <input type="text" id="player1Name">
+        </div>
+        <div class="row">
             <label for="player2Name">Player 2 Name</label>
             <input type="text" id="player2Name">
-            <button id="newGame">New Game</button>
+        </div>
+        <div class="row">
+            <label for="pointGoal">Number to Play Up To</label>
+            <input type="number" id="pointGoal">
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" id="newGame">New Game</button>
+        </div>
+        <div class="col-4 mx-auto d-block">
+            <h2 id="winner"><span></span></h2>
         </div>
         <div class="col-12">
-            <img id="dice" src="images/dice2.png" alt="Two pink Dice">
+            <img id="dice" src="images/dice2.png" class="mx-auto d-block" alt="Two pink Dice">
         </div>
     </div>
 

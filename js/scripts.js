@@ -1,7 +1,7 @@
 // UI Logic
 
 function displayWinner(winnerName) {
-    console.log(winnerName);
+    document.querySelector("#winner span").innerText = winnerName + " " + "Wins!!";
 }
 
 // Business Logic for Players

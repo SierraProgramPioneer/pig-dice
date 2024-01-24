@@ -6,6 +6,20 @@ body {
     float: center;
 }
 
+
+#rollDice,
+#holdScore,
+#newGame {
+    background-color: #ff5ec1;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
 // Cards
 
 .card {
@@ -32,6 +46,9 @@ body {
 
 }
 
+// Rows
+
+
 
 
 // Images
@@ -40,4 +57,9 @@ body {
 #dice {
     padding: 30px;
     height: 300px;
+}
+
+.mx-auto.d-block {
+    margin-top: 10px;
+    padding: 50px;
 }
