@@ -1,9 +1,29 @@
 // UI Logic
 
-function updatePlayerNames(player1Name, player2Name) {
+function displayRoll(diceRoll, activePlayerNumber, action) {
+    if (action === "roll") {
+        if (activePlayerNumber === 1) {
+            document.querySelector("#player1DiceRoll").innerText = diceRoll;
+        }
+        else {
+            document.querySelector("#player2DiceRoll").innerText = diceRoll;
+        }
+    }
+    else {
+        if (activePlayerNumber === 1) {
+            document.querySelector("#player1DiceRoll").innerText = diceRoll;
+        }
+        else {
+            document.querySelector("#player2DiceRoll").innerText = diceRoll;
+        }
+    }
+}
+
+function displayPlayerNames(player1Name, player2Name) {
     document.querySelector("#player1NameDisplay").innerText = player1Name;
     document.querySelector("#player2NameDisplay").innerText = player2Name;
 }
+
 
 function displayWinner(winnerName) {
     document.querySelector("#winner span").innerText = winnerName + " " + "Wins!!";
@@ -41,7 +61,8 @@ function switchPlayers() {
 function holdScore() {
     // Set Active Player Index
     let activePlayer = "player" + sessionGame.activePlayer;
-
+    // Clear Roll
+    displayRoll(0, sessionGame.activePlayer, "hold");
     // Add player's currentTurnScore to player's Total Score
     sessionGame.players[activePlayer].totalScore = sessionGame.players[activePlayer].totalScore + sessionGame.players[activePlayer].currentTurnScore;
 
@@ -61,7 +82,7 @@ function rollDice() {
     // Get Dice Roll
     let diceRoll = Math.floor(Math.random() * 6) + 1;
     console.log("Dice Roll" + " " + diceRoll);
-
+    displayRoll(diceRoll, sessionGame.activePlayer, "roll");
     // If roll is 1 set player's currentTurnScore to 0 and switch players
     if (diceRoll === 1) {
         sessionGame.players[activePlayer].currentTurnScore = 0;
@@ -89,7 +110,7 @@ function newGame(event) {
     // Create Players
     const player1Name = document.getElementById("player1Name").value;
     const player2Name = document.getElementById("player2Name").value;
-    updatePlayerNames(player1Name, player2Name);
+    displayPlayerNames(player1Name, player2Name);
     const pointGoal = parseInt(document.getElementById("pointGoal").value);
     let player1 = new Player(1, player1Name, 0, 0);
     let player2 = new Player(2, player2Name, 0, 0);
