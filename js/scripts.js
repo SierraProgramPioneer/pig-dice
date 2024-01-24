@@ -1,3 +1,7 @@
+function holdScore() {
+    console.log("hold score");
+}
+
 
 function rollDice() {
     console.log("roll dice");
@@ -18,5 +22,11 @@ window.addEventListener("load", function () {
     let rollDiceButtons = document.querySelectorAll(".rollDice");
     rollDiceButtons.forEach(function (button) {
         button.addEventListener("click", rollDice);
+    });
+
+    // Add Event Listener to Hold Score Buttons
+    let holdScoreButtons = document.querySelectorAll(".holdScore");
+    holdScoreButtons.forEach(function (button) {
+        button.addEventListener("click", holdScore);
     });
 })
