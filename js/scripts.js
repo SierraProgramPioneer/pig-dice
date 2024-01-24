@@ -9,7 +9,8 @@ function holdScore() {
 
 
 function rollDice() {
-    console.log("roll dice");
+    let diceRoll = Math.floor(Math.random() * 6) + 1;
+    console.log(diceRoll);
 }
 
 
