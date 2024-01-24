@@ -7,17 +7,21 @@ function Player(playerNumber, name, currentScore, totalScore) {
 }
 
 function switchPlayers() {
-    console.log("switch players")
+    if (sessionGame.activePlayer === 1) {
+        sessionGame.activePlayer = 2;
+        console.log(sessionGame.activePlayer);
+    }
+    else {
+        sessionGame.activePlayer = 1;
+        console.log(sessionGame.activePlayer);
+    }
+
 }
 
 function holdScore() {
-    console.log("hold score");
     switchPlayers();
 }
 
-Player.prototype.currentScore = (function (diceRoll) {
-
-});
 
 
 function rollDice() {
@@ -35,6 +39,7 @@ function rollDice() {
 // Business Logic for Game
 function Game(player1, player2) {
     this.players = { player1, player2 };
+    this.activePlayer = 1;
 }
 
 function handleFormSubmission(event) {
