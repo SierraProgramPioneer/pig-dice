@@ -1,3 +1,12 @@
+function Player(playerNumber, name, currentScore, totalScore) {
+    this.playerNumber = playerNumber;
+    this.name = name;
+    this.currentScore = currentScore;
+    this.totalScore = totalScore;
+}
+
+
+
 function switchPlayers() {
     console.log("switch players")
 }
@@ -5,6 +14,10 @@ function switchPlayers() {
 function holdScore() {
     console.log("hold score");
     switchPlayers();
+}
+
+function currentScore(diceRoll) {
+
 }
 
 
