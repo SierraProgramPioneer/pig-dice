@@ -1,4 +1,24 @@
 // UI Logic
+function displayCurrentTurnScore(currentTurnScore, activePlayerNumber, action) {
+    if (action === "roll") {
+        if (activePlayerNumber === 1) {
+            document.querySelector("#player1CurrentRollScore").innerText = currentTurnScore;
+        }
+        else {
+            document.querySelector("#player2CurrentRollScore").innerText = currentTurnScore;
+        }
+    }
+    else {
+        if (activePlayerNumber === 1) {
+            document.querySelector("#player1CurrentRollScore").innerText = currentTurnScore;
+        }
+        else {
+            document.querySelector("#player2CurrentRollScore").innerText = currentTurnScore;
+        }
+    }
+}
+
+
 
 function displayRoll(diceRoll, activePlayerNumber, action) {
     if (action === "roll") {
@@ -63,6 +83,7 @@ function holdScore() {
     let activePlayer = "player" + sessionGame.activePlayer;
     // Clear Roll
     displayRoll(0, sessionGame.activePlayer, "hold");
+    displayCurrentTurnScore(0, sessionGame.activePlayer, "hold");
     // Add player's currentTurnScore to player's Total Score
     sessionGame.players[activePlayer].totalScore = sessionGame.players[activePlayer].totalScore + sessionGame.players[activePlayer].currentTurnScore;
 
@@ -81,7 +102,6 @@ function rollDice() {
 
     // Get Dice Roll
     let diceRoll = Math.floor(Math.random() * 6) + 1;
-    console.log("Dice Roll" + " " + diceRoll);
     displayRoll(diceRoll, sessionGame.activePlayer, "roll");
     // If roll is 1 set player's currentTurnScore to 0 and switch players
     if (diceRoll === 1) {
@@ -91,7 +111,8 @@ function rollDice() {
     // If roll is 2-6 add roll to currentTurnScore
     else {
         sessionGame.players[activePlayer].currentTurnScore = sessionGame.players[activePlayer].currentTurnScore + diceRoll;
-        evaluateScore(sessionGame.players[activePlayer].currentTurnScore, activePlayer)
+        displayCurrentTurnScore(sessionGame.players[activePlayer].currentTurnScore, sessionGame.activePlayer, "roll");
+        evaluateScore(sessionGame.players[activePlayer].currentTurnScore, activePlayer);
     }
 }
 
