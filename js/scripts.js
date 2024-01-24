@@ -6,6 +6,7 @@ function Player(playerNumber, name, currentScore, totalScore) {
     this.totalScore = totalScore;
 }
 
+
 function switchPlayers() {
     if (sessionGame.activePlayer === 1) {
         sessionGame.activePlayer = 2;
@@ -17,9 +18,11 @@ function switchPlayers() {
     }
 }
 
+
 function holdScore() {
     let activePlayer = "player" + sessionGame.activePlayer;
     sessionGame.players[activePlayer].totalScore = sessionGame.players[activePlayer].totalScore + sessionGame.players[activePlayer].currentScore;
+    sessionGame.players[activePlayer].currentScore = 0;
     console.log("New Total Score:" + " " + sessionGame.players[activePlayer].totalScore);
     switchPlayers();
 }
@@ -31,6 +34,7 @@ function rollDice() {
     console.log("Dice Roll" + " " + diceRoll);
     let activePlayer = "player" + sessionGame.activePlayer;
     if (diceRoll === 1) {
+        sessionGame.players[activePlayer].currentScore = 0;
         console.log("Total Score:" + " " + sessionGame.players[activePlayer].totalScore);
         switchPlayers();
     }
