@@ -14,51 +14,59 @@
 
     <div class="container">
         <h1>Let's Play Pig Dice!</h1>
+        <br>
+        <h5>Enter user names and a score to play up to or accept the default names & score. Each player will take turns "Rolling the Dice." Each roll will add to the current turns's total. If a 1 is rolled, the current roll total will be 0 and the turn will switch to the other player. If a player wants to save their current turn's total they can "Hold Score" and the turn will switch to the other player. Players will continue with this until a player's total score is equal to or greater to the point goal selected.</h5>
+        <br>
+
+        <div class="row">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Player 1 Name:</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="player1Name" value="Oinkers">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Player 2 Name:</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="player2Name" value="Squeaky">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Number to Play Up To:</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="pointGoal" value="50">
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" id="newGame">Start a New Game!</button>
+        </div>
+        <div class="col-4 mx-auto d-block">
+            <h2 id="winner"><span></span></h2>
+        </div>
+
         <div class="row">
             <div class="col-5 card mx-auto d-block">
-                <h3>Player 1: <span id="player1NameDisplay"></span></h3>
+                <h3>Player 1: <span class="currentPlayer" id="player1NameDisplay"></span></h3>
                 <h5>Dice Roll: <span id="player1DiceRoll"></span></h5>
                 <h5>Turn Total: <span id="player1CurrentRollScore"></span></h5>
                 <h5>Total: <span id="player1totalScore"></span></h5>
             </div>
 
             <div class="col-5 card mx-auto d-block">
-                <h3>Player 2: <span id="player2NameDisplay"></span></h3>
+                <h3>Player 2: <span class="restingPlayer" id="player2NameDisplay"></span></h3>
                 <h5>Dice Roll: <span id="player2DiceRoll"></span></h5>
                 <h5>Turn Total: <span id="player2CurrentRollScore"></span></h5>
                 <h5>Total: <span id="player2totalScore"></span></h5>
             </div>
-        </div>
-        <div class="col-6 mx-auto d-block">
-            <button type="button" class="btn btn-primary" id="rollDice">Roll Dice</button>
-            <button type="button" class="btn btn-primary" id="holdScore">Hold Score</button>
-        </div>
-
-        <div class="row">
-            <label for="player1Name">Player 1 Name</label>
-            <input type="text" id="player1Name" value="Oinkers">
-        </div>
-        <div class="row">
-            <label for="player2Name">Player 2 Name</label>
-            <input type="text" id="player2Name" value="Squeaky">
-        </div>
-        <div class="row">
-            <label for="pointGoal">Number to Play Up To</label>
-            <input type="number" id="pointGoal" value="50">
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" id="newGame">New Game</button>
-        </div>
-        <div class="col-4 mx-auto d-block">
-            <h2 id="winner"><span></span></h2>
+            <div class="col-6 mx-auto d-block">
+                <button type="button" class="btn btn-primary" id="rollDice">Roll Dice</button>
+                <button type="button" class="btn btn-primary" id="holdScore">Hold Score</button>
+            </div>
         </div>
         <div class="col-12">
-            <img id="dice" src="images/dice2.png" class="mx-auto d-block" alt="Two pink Dice">
+            <img id="pig" src="images/pig.png" class="mx-auto d-block" alt="Cute Pink Pig">
         </div>
+
     </div>
-
-
-
 </body>
 
 </html>

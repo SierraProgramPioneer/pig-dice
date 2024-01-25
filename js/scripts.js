@@ -48,6 +48,21 @@ function displayRoll(diceRoll, activePlayerNumber, action) {
     }
 }
 
+function displayCurrentPlayer(activePlayerNumber) {
+    console.log(sessionGame.activePlayer);
+    if (activePlayerNumber === 1) {
+        let activePlayer = document.querySelector("#player1NameDisplay");
+        activePlayer.setAttribute("class", "restingPlayer");
+        let restingPlayer = document.querySelector("#player2NameDisplay");
+        restingPlayer.setAttribute("class", "currentPlayer");
+    }
+    else {
+        let activePlayer = document.querySelector("#player2NameDisplay");
+        activePlayer.setAttribute("class", "restingPlayer");
+        let restingPlayer = document.querySelector("#player1NameDisplay");
+        restingPlayer.setAttribute("class", "currentPlayer");
+    }
+}
 
 function displayPlayerNames(player1Name, player2Name) {
     document.querySelector("#player1NameDisplay").innerText = player1Name;
@@ -59,7 +74,7 @@ function displayWinner(winnerName, winningPoints) {
     document.querySelector("#winner span").innerText = winnerName + " " + "Wins!!" + " " + "Points:" + " " + winningPoints;
 }
 
-// Business Logic for Players
+// Business Logic for Rolling & Holding
 
 function Player(playerNumber, name, currentTurnScore, totalScore) {
     this.playerNumber = playerNumber;
@@ -80,12 +95,14 @@ function evaluateScore(currentTurnScore, activePlayer) {
 
 function switchPlayers() {
     if (sessionGame.activePlayer === 1) {
+
+        displayCurrentPlayer(sessionGame.activePlayer)
         sessionGame.activePlayer = 2;
-        console.log("Active Player" + " " + sessionGame.activePlayer);
     }
     else {
+
+        displayCurrentPlayer(sessionGame.activePlayer)
         sessionGame.activePlayer = 1;
-        console.log("Active Player" + " " + sessionGame.activePlayer);
     }
 }
 
