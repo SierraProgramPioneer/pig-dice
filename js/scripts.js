@@ -1,4 +1,13 @@
 // UI Logic
+
+function clearValues() {
+    // Clear Input Field Values
+    document.getElementById("player1Name").value = null;
+    document.getElementById("player2Name").value = null;
+    document.getElementById("pointGoal").value = null;
+}
+
+
 function displayTotalScore(totalScore, activePlayerNumber) {
     if (activePlayerNumber === 1) {
         document.querySelector("#player1totalScore").innerText = totalScore;
@@ -48,8 +57,8 @@ function displayRoll(diceRoll, activePlayerNumber, action) {
     }
 }
 
+
 function displayCurrentPlayer(activePlayerNumber) {
-    console.log(sessionGame.activePlayer);
     if (activePlayerNumber === 1) {
         let activePlayer = document.querySelector("#player1NameDisplay");
         activePlayer.setAttribute("class", "restingPlayer");
@@ -64,6 +73,7 @@ function displayCurrentPlayer(activePlayerNumber) {
     }
 }
 
+
 function displayPlayerNames(player1Name, player2Name) {
     document.querySelector("#player1NameDisplay").innerText = player1Name;
     document.querySelector("#player2NameDisplay").innerText = player2Name;
@@ -74,6 +84,7 @@ function displayWinner(winnerName, winningPoints) {
     document.querySelector("#winner span").innerText = winnerName + " " + "Wins!!" + " " + "Points:" + " " + winningPoints;
 }
 
+
 // Business Logic for Rolling & Holding
 
 function Player(playerNumber, name, currentTurnScore, totalScore) {
@@ -82,6 +93,7 @@ function Player(playerNumber, name, currentTurnScore, totalScore) {
     this.currentTurnScore = currentTurnScore;
     this.totalScore = totalScore;
 }
+
 
 function evaluateScore(currentTurnScore, activePlayer) {
     const currenttotalScore = sessionGame.players[activePlayer].totalScore;
@@ -92,6 +104,7 @@ function evaluateScore(currentTurnScore, activePlayer) {
         clearGame();
     }
 }
+
 
 function switchPlayers() {
     if (sessionGame.activePlayer === 1) {
@@ -151,6 +164,7 @@ function rollDice() {
     }
 }
 
+
 // Business Logic for Game
 
 function Game(player1, player2, pointGoal) {
@@ -175,12 +189,6 @@ function clearGame() {
 }
 
 
-function clearValues() {
-    // Clear Input Field Values
-    document.getElementById("player1Name").value = null;
-    document.getElementById("player2Name").value = null;
-    document.getElementById("pointGoal").value = null;
-}
 
 function newGame(event) {
     // Prevent Event Default
