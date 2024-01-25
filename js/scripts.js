@@ -72,7 +72,9 @@ function evaluateScore(currentTurnScore, activePlayer) {
     const currenttotalScore = sessionGame.players[activePlayer].totalScore;
     const newTotalScore = currentTurnScore + currenttotalScore;
     if (newTotalScore >= sessionGame.pointGoal) {
-        displayWinner(sessionGame.players[activePlayer].name)
+        displayTotalScore(newTotalScore, sessionGame.activePlayer);
+        displayWinner(sessionGame.players[activePlayer].name);
+        clearGame();
     }
 }
 
@@ -141,9 +143,21 @@ function Game(player1, player2, pointGoal) {
     this.pointGoal = pointGoal;
 }
 
+function clearGame() {
+    console.log("clear");
+}
+
+
+function clearValues() {
+    document.getElementById("player1Name").value = null;
+    document.getElementById("player2Name").value = null;
+    document.getElementById("pointGoal").value = null;
+}
+
 function newGame(event) {
     // Prevent Event Default
     event.preventDefault();
+
     // Create Players
     const player1Name = document.getElementById("player1Name").value;
     const player2Name = document.getElementById("player2Name").value;
@@ -151,8 +165,12 @@ function newGame(event) {
     const pointGoal = parseInt(document.getElementById("pointGoal").value);
     let player1 = new Player(1, player1Name, 0, 0);
     let player2 = new Player(2, player2Name, 0, 0);
+
     // Create New Game
     sessionGame = new Game(player1, player2, pointGoal);
+
+    // Clear Values
+    clearValues();
 };
 
 
