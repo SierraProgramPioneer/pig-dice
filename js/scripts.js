@@ -144,11 +144,16 @@ function Game(player1, player2, pointGoal) {
 }
 
 function clearGame() {
-    console.log("clear");
+    sessionGame = new Game("", "", 0);
+    console.log(sessionGame);
+    document.getElementById("player1Name").value = "Oinkers";
+    document.getElementById("player2Name").value = "Squeaky";
+    document.getElementById("pointGoal").value = 50;
 }
 
 
 function clearValues() {
+    // Clear Input Field Values
     document.getElementById("player1Name").value = null;
     document.getElementById("player2Name").value = null;
     document.getElementById("pointGoal").value = null;
