@@ -55,8 +55,8 @@ function displayPlayerNames(player1Name, player2Name) {
 }
 
 
-function displayWinner(winnerName) {
-    document.querySelector("#winner span").innerText = winnerName + " " + "Wins!!";
+function displayWinner(winnerName, winningPoints) {
+    document.querySelector("#winner span").innerText = winnerName + " " + "Wins!!" + " " + "Points:" + " " + winningPoints;
 }
 
 // Business Logic for Players
@@ -72,8 +72,8 @@ function evaluateScore(currentTurnScore, activePlayer) {
     const currenttotalScore = sessionGame.players[activePlayer].totalScore;
     const newTotalScore = currentTurnScore + currenttotalScore;
     if (newTotalScore >= sessionGame.pointGoal) {
-        displayTotalScore(newTotalScore, sessionGame.activePlayer);
-        displayWinner(sessionGame.players[activePlayer].name);
+
+        displayWinner(sessionGame.players[activePlayer].name, newTotalScore);
         clearGame();
     }
 }
@@ -144,8 +144,14 @@ function Game(player1, player2, pointGoal) {
 }
 
 function clearGame() {
-    sessionGame = new Game("", "", 0);
-    console.log(sessionGame);
+    document.querySelector("#player1NameDisplay").innerText = null;
+    document.querySelector("#player2NameDisplay").innerText = null;
+    document.querySelector("#player1DiceRoll").innerText = null;
+    document.querySelector("#player2DiceRoll").innerText = null;
+    document.querySelector("#player1CurrentRollScore").innerText = null;
+    document.querySelector("#player2CurrentRollScore").innerText = null;
+    document.querySelector("#player1totalScore").innerText = null;
+    document.querySelector("#player2totalScore").innerText = null;
     document.getElementById("player1Name").value = "Oinkers";
     document.getElementById("player2Name").value = "Squeaky";
     document.getElementById("pointGoal").value = 50;
