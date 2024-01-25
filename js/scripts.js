@@ -1,4 +1,14 @@
 // UI Logic
+function displayTotalScore(totalScore, activePlayerNumber) {
+    if (activePlayerNumber === 1) {
+        document.querySelector("#player1totalScore").innerText = totalScore;
+    }
+    else {
+        document.querySelector("#player2totalScore").innerText = totalScore;
+    }
+}
+
+
 function displayCurrentTurnScore(currentTurnScore, activePlayerNumber, action) {
     if (action === "roll") {
         if (activePlayerNumber === 1) {
@@ -8,7 +18,7 @@ function displayCurrentTurnScore(currentTurnScore, activePlayerNumber, action) {
             document.querySelector("#player2CurrentRollScore").innerText = currentTurnScore;
         }
     }
-    else {
+    else if (action === "hold" || action === "lost") {
         if (activePlayerNumber === 1) {
             document.querySelector("#player1CurrentRollScore").innerText = currentTurnScore;
         }
@@ -17,7 +27,6 @@ function displayCurrentTurnScore(currentTurnScore, activePlayerNumber, action) {
         }
     }
 }
-
 
 
 function displayRoll(diceRoll, activePlayerNumber, action) {
@@ -29,7 +38,7 @@ function displayRoll(diceRoll, activePlayerNumber, action) {
             document.querySelector("#player2DiceRoll").innerText = diceRoll;
         }
     }
-    else {
+    else if (action === "hold" || action === "lost") {
         if (activePlayerNumber === 1) {
             document.querySelector("#player1DiceRoll").innerText = diceRoll;
         }
@@ -38,6 +47,7 @@ function displayRoll(diceRoll, activePlayerNumber, action) {
         }
     }
 }
+
 
 function displayPlayerNames(player1Name, player2Name) {
     document.querySelector("#player1NameDisplay").innerText = player1Name;
@@ -81,16 +91,20 @@ function switchPlayers() {
 function holdScore() {
     // Set Active Player Index
     let activePlayer = "player" + sessionGame.activePlayer;
-    // Clear Roll
+
+    // Clear Display of Current Player's Roll
     displayRoll(0, sessionGame.activePlayer, "hold");
     displayCurrentTurnScore(0, sessionGame.activePlayer, "hold");
+
     // Add player's currentTurnScore to player's Total Score
     sessionGame.players[activePlayer].totalScore = sessionGame.players[activePlayer].totalScore + sessionGame.players[activePlayer].currentTurnScore;
 
     // Set player's currentTurnScore to 0
     sessionGame.players[activePlayer].currentTurnScore = 0;
 
-    console.log("New Total Score:" + " " + sessionGame.players[activePlayer].totalScore);
+    // Display Total Score
+    displayTotalScore(sessionGame.players[activePlayer].totalScore, sessionGame.activePlayer);
+
     // Switch Players
     switchPlayers();
 }
@@ -103,9 +117,11 @@ function rollDice() {
     // Get Dice Roll
     let diceRoll = Math.floor(Math.random() * 6) + 1;
     displayRoll(diceRoll, sessionGame.activePlayer, "roll");
-    // If roll is 1 set player's currentTurnScore to 0 and switch players
+    // If roll is 1 set & display player's currentTurnScore to 0 and switch players
     if (diceRoll === 1) {
         sessionGame.players[activePlayer].currentTurnScore = 0;
+        displayRoll("(1) lost", sessionGame.activePlayer, "lost");
+        displayCurrentTurnScore("lost", sessionGame.activePlayer, "lost");
         switchPlayers();
     }
     // If roll is 2-6 add roll to currentTurnScore
